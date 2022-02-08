@@ -26,14 +26,14 @@ KManager.action :bootstrap do
         open_repository
       end
       .blueprint(
-        active: true,
+        active: false,
         name: :bin_hook,
         description: 'initialize repository',
         on_exist: :write) do
 
         cd(:app)
 
-        # run_command('git init')
+        run_command('git init')
         add('.gitignore')
         run_template_script('.git-setup.sh', dom: dom)
 
